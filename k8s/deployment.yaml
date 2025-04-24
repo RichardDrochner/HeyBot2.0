@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heybot-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: heybot
+  template:
+    metadata:
+      labels:
+        app: heybot
+    spec:
+      containers:
+        - name: heybot
+          image: ghcr.io/richarddrochner/heybot2.0-with-trivy-output:latest
+          ports:
+            - containerPort: 7861
+          # command: ["/bin/bash", "-c", "while true; do sleep 3600; done"]
+      imagePullSecrets:
+        - name: heybot2secret  # Das ImagePullSecret, das du vorher erstellt hast
