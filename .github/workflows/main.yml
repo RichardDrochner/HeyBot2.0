@@ -33,6 +33,7 @@ jobs:
         with:
           version: latest # Specify the desired version
 
+
       # Scan the Docker image for vulnerabilities
       - name: Scan Docker image for vulnerabilities
         run: |
